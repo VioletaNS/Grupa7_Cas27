@@ -59,6 +59,16 @@ namespace Cas27
             }
         }
 
+        public void PutContact(int Id, ContactObject UpdatedContact, out HttpResponseMessage Response)
+        {
+            Response = Client.PutAsJsonAsync<ContactObject>("contact/" + Id.ToString(), UpdatedContact).Result;
+        }
+
+        public void DeleteContact(int Id, out HttpResponseMessage Response)
+        {
+            Response = Client.DeleteAsync("contact/" + Id.ToString()).Result;
+        }
+
         public void Cleanup()
         {
             Client.Dispose();
